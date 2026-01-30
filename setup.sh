@@ -4,6 +4,9 @@ sudo apt-get install network-manager
 # Enable NetworkManager to control all network interfaces
 sudo sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf
 
+# Restart NetworkManager to apply the above configuration
+sudo systemctl restart NetworkManager
+
 # Add Ethernet connection
 sudo nmcli connection add type ethernet ifname eth0 con-name "mobile" autoconnect yes
 
