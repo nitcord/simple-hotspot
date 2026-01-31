@@ -15,7 +15,16 @@ sudo nmcli connection add type wifi ifname wlan0 con-name "hotspot" autoconnect 
 
 # Allowed 5 GHz channels in the UK: 36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140 (some require DFS/TPC per Ofcom)
 # Allowed 5 GHz channels in the US: 36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 149, 153, 157, 161, 165 (some require DFS per FCC)
-sudo nmcli connection modify "hotspot" 802-11-wireless.mode ap 802-11-wireless.band a 802-11-wireless.channel 48 ipv4.method shared ipv6.method ignore
+sudo nmcli connection modify "hotspot" \
+  802-11-wireless.mode ap \
+  802-11-wireless.band a \
+  802-11-wireless.channel 48 \
+  ipv4.method shared \
+  ipv6.method ignore \
+  wifi-sec.key-mgmt wpa-psk \
+  wifi-sec.proto rsn \
+  wifi-sec.group ccmp \
+  wifi-sec.pairwise ccmp
 
 # Set WPA-PSK security
 sudo nmcli connection modify "hotspot" wifi-sec.key-mgmt wpa-psk
