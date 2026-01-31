@@ -19,6 +19,7 @@ sudo nmcli connection modify "hotspot" \
   802-11-wireless.mode ap \
   802-11-wireless.band a \
   802-11-wireless.channel 48 \
+  802-11-wireless-security.pmf 2 \
   ipv4.method shared \
   ipv6.method ignore \
   wifi-sec.key-mgmt wpa-psk \
